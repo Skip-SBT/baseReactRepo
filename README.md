@@ -1,6 +1,14 @@
-# INTRODUCTION
+# Base React Repo
 
-Base repo for react projects with webpack, tsconfig and workflows.
+This repository serves as a template for React projects configured with Webpack, TypeScript, ESLint, and GitHub Actions for Continuous Integration (CI).
+
+## Features
+
+- **React**: A base setup for React development.
+- **Webpack**: Bundling configuration for your project.
+- **TypeScript**: TypeScript support for static typing.
+- **ESLint**: Code linting configured for React and TypeScript.
+- **GitHub Actions**: Automated CI pipeline for linting and dependency management.
 
 
 ## Continuous Integration (CI) Workflow

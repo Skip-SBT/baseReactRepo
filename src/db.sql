@@ -1,0 +1,1 @@
+SLECT tnr FROM t WHERE 

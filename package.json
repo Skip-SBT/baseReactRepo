@@ -5,24 +5,37 @@
   "dependencies": {
     "@emotion/react": "~11.14.0",
     "@emotion/styled": "~11.14.0",
+    "@eslint/js": "^9.20.0",
     "@mui/icons-material": "~5.16.6",
     "@mui/material": "~5.16.6",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^14.5.2",
+    "gulp": "^5.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.1.5",
     "react-scripts": "5.0.1",
+    "rimraf": "^6.0.1",
+    "ts-loader": "^9.5.2",
     "web-vitals": "^4.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint:fix": "eslint . --fix",
-    "lint:no-fix": "eslint ."
+    "start": "gulp start",
+    "stats": "gulp stats",
+    "build:dev": "gulp build:dev",
+    "build:prod": "gulp build:prod",
+    "build": "npx webpack --config webpack.config.js",
+    "check:eslint": "gulp eslint",
+    "check:eslint:fix": "gulp eslint:fix",
+    "check:stylelint": "gulp stylelint",
+    "check:stylelint:fix": "gulp stylelint:fix",
+    "check:spellcheck": "gulp spellcheck",
+    "check:all": "gulp check:all",
+    "reset": "gulp reset",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "bump-version": "gulp bump-version"
   },
   "eslintConfig": {
     "extends": [
@@ -44,10 +57,19 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
+    "@typescript-eslint/parser": "^5.62.0",
     "css-loader": "^7.1.2",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-optimize-regex": "^1.2.1",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "execa": "^9.5.2",
     "file-loader": "^6.2.0",
+    "globals": "^15.14.0",
+    "html-webpack-plugin": "^5.6.3",
     "sass": "^1.83.4",
     "sass-loader": "^16.0.4",
-    "style-loader": "^4.0.0"
+    "style-loader": "^4.0.0",
+    "webpack-cli": "^6.0.1"
   }
 }

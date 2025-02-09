@@ -92,7 +92,7 @@ jobs:
 
 ### Linting & Spellchecking
 
-To tweek the linting rules or add "known" words to the spelling dictionary you can edit `eslint.config.mjs`, `.stylelintrc.cjs` or `cspell.json`
+To tweak the linting rules or add "known" words to the spelling dictionary you can edit `eslint.config.mjs`, `.stylelintrc.cjs` or `cspell.json`
 
 ## Deployment to GitHub Pages
 

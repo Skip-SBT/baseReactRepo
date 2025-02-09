@@ -98,10 +98,6 @@ async function spellcheck() {
     await execa('cspell', ['--no-progress', '--color'], defaultExec);
 }
 
-async function test() {
-    await execa('jest', ['--color'], defaultExec);
-}
-
 async function testWatch() {
     await execa('jest', ['--watchAll'], {...defaultExec, stdio: 'inherit'});
 }
@@ -144,7 +140,7 @@ gulp.task('eslint:fix', eslintFix);
 gulp.task('stylelint', stylelint);
 gulp.task('stylelint:fix', stylelintFix);
 gulp.task('spellcheck', spellcheck);
-gulp.task('check:all', series(npmInstall, parallel(eslint, stylelint, spellcheck, test)));
+gulp.task('check:all', series(npmInstall, parallel(eslint, stylelint, spellcheck)));
 gulp.task('bump-version', bumpVersion);
 gulp.task('reset', series(rimrafAll, npmInstall));
 

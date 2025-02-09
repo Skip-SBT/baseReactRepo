@@ -5,9 +5,7 @@ import theme from './theme';
 
 export default function App() {
     return (
-        <ThemeProvider theme={theme}>
-
-        </ThemeProvider>
+        <ThemeProvider theme={theme} />
     );
 }
 

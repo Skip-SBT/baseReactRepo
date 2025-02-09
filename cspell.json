@@ -1,0 +1,59 @@
+{
+  "language": "en,de",
+  "useGitignore": true,
+  "files": [
+    "**/*.bat",
+    "**/*.css",
+    "**/*.html",
+    "**/*.js",
+    "**/*.json",
+    "**/*.jsx",
+    "**/*.md",
+    "**/*.php",
+    "**/*.scss",
+    "**/*.sh",
+    "**/*.sql",
+    "**/*.svg",
+    "**/*.tmpl",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.twig",
+    "**/*.txt",
+    "**/*.xml",
+    "**/*.xsd",
+    "**/*.yaml",
+    "**/*.yml",
+    "**/Dockerfile",
+    "**/Dockerfile.*"
+  ],
+  "ignorePaths": [
+    "**/composer.json",
+    "**/package.json",
+    "src/translation"
+  ],
+  "import": [
+    "@cspell/dict-de-ch/cspell-ext.json",
+    "@cspell/dict-de-de/cspell-ext.json"
+  ],
+  "dictionaries": [
+    "aws",
+    "bash",
+    "css",
+    "docker",
+    "en_US",
+    "filetypes",
+    "fonts",
+    "git",
+    "html",
+    "html-symbol-entities",
+    "lorem-ipsum",
+    "node",
+    "npm",
+    "php",
+    "softwareTerms",
+    "typescript"
+  ],
+  "words": [
+    "TTFB"
+  ]
+}

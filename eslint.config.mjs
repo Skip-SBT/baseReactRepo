@@ -3,7 +3,7 @@ import tseslint from "@typescript-eslint/eslint-plugin";
 import tseslintParser from "@typescript-eslint/parser";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
-import reactRedux from "eslinzt-plugin-react-redux";
+import reactRedux from "eslint-plugin-react-redux";
 import optimizeRegex from "eslint-plugin-optimize-regex";
 import importPlugin from "eslint-plugin-import";
 import globals from "globals";

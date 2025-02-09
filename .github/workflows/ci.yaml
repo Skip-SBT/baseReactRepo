@@ -48,4 +48,4 @@ jobs:
         run: npm run check:stylelint
 
       - name: Run spellcheck
-        run: npm run check:spell
+        run: npm run check:spellcheck

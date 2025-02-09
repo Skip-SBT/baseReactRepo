@@ -42,4 +42,10 @@ jobs:
         run: npm ci
 
       - name: Run code eslint check
-        run: npm run lint:no-fix
+        run: npm run check:eslint
+
+      - name: Run code stylelint check
+        run: npm run check:stylelint
+
+      - name: Run spellcheck
+        run: npm run check:spellcheck

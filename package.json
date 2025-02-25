@@ -62,7 +62,7 @@
     "@svgr/webpack": "^8.1.0",
     "@typescript-eslint/eslint-plugin": "^8.24.1",
     "@typescript-eslint/parser": "^8.24.1",
-    "cspell": "^8.17.3",
+    "cspell": "^8.17.5",
     "css-loader": "^7.1.2",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-optimize-regex": "^1.2.1",

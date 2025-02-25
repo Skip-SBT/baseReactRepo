@@ -15,7 +15,7 @@
     "gulp": "^5.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^7.1.5",
+    "react-router-dom": "^7.2.0",
     "react-scripts": "^5.0.1",
     "rimraf": "^6.0.1",
     "ts-loader": "^9.5.2",

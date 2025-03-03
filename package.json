@@ -60,7 +60,7 @@
     "@cspell/dict-de-ch": "^1.2.3",
     "@cspell/dict-de-de": "^4.0.3",
     "@svgr/webpack": "^8.1.0",
-    "@typescript-eslint/eslint-plugin": "^8.24.1",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
     "@typescript-eslint/parser": "^8.25.0",
     "cspell": "^8.17.5",
     "css-loader": "^7.1.2",

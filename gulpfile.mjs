@@ -70,12 +70,7 @@ async function npmInstall() {
 }
 
 async function runDevelopmentServer() {
-    await execa('webpack', ['server', '--mode=development', '--progress'], {...defaultExec, stdio: 'inherit'});
-}
-
-async function createStats() {
-    await execa('webpack', ['--mode=production', '--profile', '--json', 'stats.json'], defaultExec);
-    await execa('webpack-bundle-analyzer', ['-m', 'static', '-O', '-r', 'stats.html', 'stats.json'], defaultExec);
+    await execa('vite', ['--mode', 'development'], {...defaultExec, stdio: 'inherit'});
 }
 
 async function eslint() {
@@ -111,10 +106,10 @@ async function bumpVersion() {
     await execa('node', ['bump-version.js'], {...defaultExec, stdio: 'inherit'});
 }
 
-// Generic building of webpack bundle, these are sensitive to BROWSERSLIST_ENV
+// Generic building of vite bundle
 
-async function buildWebpack() {
-    await execa('webpack', ['--mode=' + getMode()], defaultExec);
+async function buildVite() {
+    await execa('vite', ['build', '--mode', getMode()], defaultExec);
 }
 
 // For i18next-parser, enable this task to extract translations
@@ -134,7 +129,6 @@ async function buildWebpack() {
 // Dev tools
 gulp.task('npm:install', npmInstall);
 gulp.task('start', series(npmInstall, runDevelopmentServer));
-gulp.task('stats', series(npmInstall, createStats));
 gulp.task('eslint', eslint);
 gulp.task('eslint:fix', eslintFix);
 gulp.task('stylelint', stylelint);
@@ -144,8 +138,6 @@ gulp.task('check:all', series(npmInstall, parallel(eslint, stylelint, spellcheck
 gulp.task('bump-version', bumpVersion);
 gulp.task('reset', series(rimrafAll, npmInstall));
 
-// gulp.task('i18next', i18nextExtract);
-
 // Build tools
-gulp.task('build:dev', series(npmInstall, development, buildWebpack));
-gulp.task('build:prod', series(npmInstall, production, buildWebpack));
+gulp.task('build:dev', series(npmInstall, development, buildVite));
+gulp.task('build:prod', series(npmInstall, production, buildVite));

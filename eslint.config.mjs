@@ -10,7 +10,7 @@ import globals from "globals";
 
 export default [
     {
-        ignores: ["src/types/theme.d.ts", "src/index.js"],
+        ignores: ["src/types/theme.d.ts", "src/index.jsx"],
     },
     js.configs.recommended,
     {

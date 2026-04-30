@@ -12,6 +12,9 @@ on:
       - live
       - testing
 
+permissions:
+  contents: read
+
 jobs:
   ci:
     runs-on: ubuntu-latest

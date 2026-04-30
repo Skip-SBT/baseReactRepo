@@ -1,100 +1,95 @@
 # Base React Repo
 
-This repository serves as a template for React projects configured with Webpack, TypeScript, ESLint, and GitHub Actions for Continuous Integration (CI). The project now utilizes **Gulp** instead of react-scripts and includes a function to deploy to GitHub Pages.
+A template for React projects configured with Vite, TypeScript, MUI, ESLint, Stylelint, and GitHub Actions CI.
 
 ## Features
 
-- **React**: A base setup for React development.
-- **Gulp**: Task automation for building and running the project.
-- **Webpack**: Bundling configuration for your project.
-- **TypeScript**: TypeScript support for static typing.
-- **ESLint**: Code linting configured for React and TypeScript.
-- **Stylelint**: CSS and SCSS linting to ensure styling consistency.
-- **CSpell**: Automated spellchecking to catch typos in the codebase.
-- **GitHub Actions**: Automated CI pipeline for linting, spellchecking, style checking, and dependency management.
-- **GitHub Pages Deployment**: Functionality to deploy the project to GitHub Pages.
+- **React 18** with TypeScript
+- **Vite** — fast dev server and production bundler
+- **MUI (Material UI)** — component library with a custom theme starter
+- **React Router** — client-side routing
+- **Vitest** — unit testing with jsdom
+- **ESLint** — flat config, TypeScript-aware, with import sorting
+- **Stylelint** — SCSS linting with Prettier integration
+- **Prettier** — consistent code formatting
+- **CSpell** — spellchecking
+- **GitHub Pages** — one-command deployment
 
-## Continuous Integration (CI) Workflow
+## Getting Started
 
-This project uses GitHub Actions to automate Continuous Integration (CI) tasks. The CI pipeline is triggered on every push or pull request to the `main`, `live`, or `testing` branches. The workflow ensures that the code is properly linted, spellchecked, style-checked, and that all dependencies are correctly installed.
+Requires Node.js 22 (see `.nvmrc`).
 
-### Workflow Overview
-
-The following is the GitHub Actions workflow configuration used for this project:
-
-```yaml
-name: ci
-
-on:
-  push:
-    branches:
-      - main
-      - live
-      - testing
-  pull_request:
-    branches:
-      - main
-      - live
-      - testing
-
-jobs:
-  ci:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [18]
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@main
-
-      - name: Setup node env
-        uses: actions/setup-node@v2.1.2
-        with:
-          node-version: ${{ matrix.node }}
-
-      - name: Cache node_modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run code eslint check
-        run: npm run check:eslint
-
-      - name: Run code stylelint check
-        run: npm run check:stylelint
-
-      - name: Run spellcheck
-        run: npm run check:spellcheck
+```bash
+npm install
+npm run dev
 ```
 
-### How It Works
+Open [http://localhost:5173](http://localhost:5173) to see the Hello World page.
+Edit `src/pages/HomePage.tsx` to start building.
 
-- **Triggers**: The workflow is triggered on any push or pull request to the `main`, `live`, or `testing` branches.
-- **Environment**: The workflow runs on `ubuntu-latest` with Node.js version `18`.
-- **Caching**: The workflow caches `node_modules` based on the `package-lock.json` hash to speed up dependency installation.
-- **Steps**:
-  - **Checkout**: Pulls the latest code from the repository.
-  - **Setup Node Environment**: Configures the Node.js environment with version `18`.
-  - **Cache Dependencies**: Reuses cached `node_modules` when possible to speed up builds.
-  - **Install Dependencies**: Installs project dependencies using `npm ci` for a clean install.
-  - **Run ESLint**: Lints the codebase using `npm run lint:no-fix` to ensure code quality without automatically fixing issues.
-  - **Run Stylelint**: Checks CSS and SCSS files for style issues using `npm run lint:styles`.
-  - **Run Spellcheck**: Uses CSpell to check for spelling mistakes using `npm run lint:spellcheck`.
+## Scripts
 
-### Linting & Spellchecking
+| Script | Description |
+|---|---|
+| `npm run dev` | Start the Vite dev server |
+| `npm run build` | Production build to `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm test` | Run tests once |
+| `npm run test:watch` | Run tests in watch mode |
+| `npm run check:eslint` | Lint TypeScript/TSX files |
+| `npm run check:eslint:fix` | Lint and auto-fix |
+| `npm run check:stylelint` | Lint SCSS files |
+| `npm run check:stylelint:fix` | Lint and auto-fix SCSS |
+| `npm run check:spellcheck` | Spellcheck source files |
+| `npm run check:all` | Run all checks in sequence |
+| `npm run format` | Format all files with Prettier |
+| `npm run format:check` | Check formatting without writing |
+| `npm run deploy` | Deploy `dist/` to GitHub Pages |
+| `npm run reset` | Delete `dist/` and `node_modules/`, then reinstall |
 
-To tweak the linting rules or add "known" words to the spelling dictionary you can edit `eslint.config.mjs`, `.stylelintrc.cjs` or `cspell.json`
+## Project Structure
+
+```
+src/
+├── pages/          # Route-level page components
+│   └── HomePage.tsx
+├── styles/         # Global SCSS
+│   ├── index.scss
+│   └── variables.scss
+├── types/          # TypeScript augmentations
+│   └── theme.d.ts
+├── App.tsx         # Root component — router and theme provider
+├── main.tsx        # Entry point
+├── theme.ts        # MUI theme
+└── index.css       # Base CSS reset
+```
+
+## Adding Pages
+
+1. Create a component in `src/pages/`
+2. Add a `<Route>` in `src/App.tsx`
+
+```tsx
+<Route path="/about" element={<AboutPage />} />
+```
+
+## Configuration Files
+
+| File | Purpose |
+|---|---|
+| `vite.config.mjs` | Vite and Vitest config |
+| `tsconfig.json` | TypeScript compiler options |
+| `eslint.config.mjs` | ESLint flat config |
+| `.stylelintrc.json` | Stylelint rules |
+| `.prettierrc` | Prettier formatting options |
+| `cspell.json` | Spellcheck dictionary and settings |
 
 ## Deployment to GitHub Pages
 
-This project includes a function to deploy to GitHub Pages using Gulp. The `gulp deploy` task handles the process of publishing the build output to the `gh-pages` branch. You need to enable gh-pages in your github repo settings.
+1. Set `homepage` in `package.json` to `https://<GITHUB_NAME>.github.io/<REPO_NAME>`
+2. Enable GitHub Pages in your repo settings (source: `gh-pages` branch)
+3. Run `npm run deploy`
 
+## Linting & Formatting
+
+Edit `eslint.config.mjs`, `.stylelintrc.json`, or `cspell.json` to adjust rules or add known words to the spelling dictionary.

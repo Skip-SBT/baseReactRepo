@@ -1,0 +1,34 @@
+{
+    "plugins": ["stylelint-scss", "stylelint-prettier"],
+    "extends": ["stylelint-config-standard", "stylelint-config-standard-scss", "stylelint-prettier/recommended"],
+    "rules": {
+        "alpha-value-notation": null,
+        "at-rule-no-unknown": null,
+        "color-function-notation": "legacy",
+        "color-hex-length": "long",
+        "comment-empty-line-before": null,
+        "declaration-empty-line-before": null,
+        "function-url-quotes": null,
+        "keyframes-name-pattern": "^[a-z][a-zA-Z\\d]*(?:-[a-z][a-zA-Z\\d]*)*$",
+        "no-descending-specificity": null,
+        "no-duplicate-selectors": null,
+        "property-no-vendor-prefix": null,
+        "selector-attribute-quotes": "always",
+        "selector-class-pattern": "^[a-z][a-zA-Z\\d]*(?:-[a-z][a-zA-Z\\d]*)*$",
+        "shorthand-property-no-redundant-values": null,
+        "function-no-unknown": null,
+        "prettier/prettier": [
+            true,
+            {
+                "endOfLine": "lf",
+                "printWidth": 160,
+                "singleAttributePerLine": false,
+                "singleQuote": true
+            }
+        ],
+        "scss/at-rule-no-unknown": true,
+        "scss/dollar-variable-empty-line-before": null,
+        "scss/double-slash-comment-empty-line-before": null
+    },
+    "ignoreFiles": ["node_modules/**", "dist/**"]
+}

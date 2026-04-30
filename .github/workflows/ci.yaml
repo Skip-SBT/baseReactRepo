@@ -14,38 +14,18 @@ on:
 
 jobs:
   ci:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [22]
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@main
+      - uses: actions/checkout@v4
 
-      - name: Setup node env
-        uses: actions/setup-node@v2.1.2
+      - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
-
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          node-version-file: .nvmrc
+          cache: npm
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Run code eslint check
-        run: npm run check:eslint
-
-      - name: Run code stylelint check
-        run: npm run check:stylelint
-
-      - name: Run spellcheck
-        run: npm run check:spellcheck
+      - name: Run all checks
+        run: npm run check:all
